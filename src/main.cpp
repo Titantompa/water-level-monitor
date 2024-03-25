@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <ESP8266WiFi.h>
 #include <TaskScheduler.h>
 #include <NeoPixelBus.h>
 
@@ -94,6 +95,9 @@ ProbeSensorsTask Refresher(TaskScheduler, NeoPixel);
 
 void setup()
 {
+  // Turn off WiFi, to save power and preserve the ether
+  WiFi.mode(WIFI_OFF);
+
   pinMode(PIXEL_PIN, OUTPUT);
   pinMode(LOWER_SENSOR_PIN, INPUT_PULLUP);
   pinMode(UPPER_SENSOR_PIN, INPUT_PULLUP);
